@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-# Install Docker on Ubuntu/Debian as a Linux Bash script.
-# This script follows the standard Docker engine installation workflow.
+# Install Docker on Ubuntu/Debian.
+# This script installs Docker Engine using the official Docker repository.
 
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg lsb-release
@@ -20,16 +20,15 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 sudo systemctl enable docker
 sudo systemctl start docker
-
 sudo usermod -aG docker "$USER"
 
 cat <<'EOF'
 Docker installation complete.
 
 Docker fundamentals:
-- Volumes: persistent storage for data; define them with `volumes:` in Docker Compose.
-- Networking: containers communicate through user-defined or default bridge networks.
-- Example: `docker network ls` and `docker volume ls` help inspect the environment.
+- Volumes: persistent storage defined with `volumes:` in Docker Compose.
+- Networking: containers communicate over a Docker network, usually bridge.
+- Example: `docker network ls` and `docker volume ls` show active components.
 
 Please log out and log back in to refresh group membership.
 EOF
